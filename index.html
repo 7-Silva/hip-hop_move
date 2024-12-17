@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards de Hip Hop</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /* Botões dos movimentos */
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Área onde o movimento será exibido */
+        #movement-display {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #movement-display iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        #movement-display p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        #back-button {
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3em;
+            }
+
+            .buttons-container {
+                gap: 5px;
+            }
+
+            button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+
+            #movement-display p {
+                font-size: 1em;
+            }
+
+            #movement-display iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Flashcards de Passos de Hip Hop</h1>
+
+    <!-- Botões com os nomes dos movimentos -->
+    <div id="buttons-wrapper">
+        <div class="buttons-container">
+            <button onclick="showMovement('Bounce')">Bounce</button>
+            <button onclick="showMovement('Bart Simpson')">Bart Simpson</button>
+            <button onclick="showMovement('Biz Markie')">Biz Markie</button>
+            <button onclick="showMovement('Reebok')">Reebok</button>
+            <button onclick="showMovement('Kick Ball Change')">Kick Ball Change</button>
+            <button onclick="showMovement('Party Duke')">Party Duke</button>
+            <button onclick="showMovement('Running Man')">Running Man</button>
+            <button onclick="showMovement('Cabbage Patch')">Cabbage Patch</button>
+            <button onclick="showMovement('Happy Feet')">Happy Feet</button>
+            <button onclick="showMovement('Butterfly')">Butterfly</button>
+        </div>
+        <div class="buttons-container">
+            <button onclick="showMovement('The Fila')">The Fila</button>
+            <button onclick="showMovement('Brooklyn Bounce')">Brooklyn Bounce</button>
+            <button onclick="showMovement('Roger Rabbit')">Roger Rabbit</button>
+            <button onclick="showMovement('C-Walk')">C-Walk</button>
+            <button onclick="showMovement('Smurf')">Smurf</button>
+            <button onclick="showMovement('Wop')">Wop</button>
+            <button onclick="showMovement('Heel Toe')">Heel Toe</button>
+            <button onclick="showMovement('Party Machine')">Party Machine</button>
+            <button onclick="showMovement('Charlestone')">Charlestone</button>
+            <button onclick="showMovement('Real Love')">Real Love</button>
+        </div>        
+        <div class="buttons-container">
+            <button onclick="showMovement('Superman')">Superman</button>
+            <button onclick="showMovement('RoofTop')">RoofTop</button>
+            <button onclick="showMovement('Reject')">Reject</button>
+            <button onclick="showMovement('Roller Skate')">Roller Skate</button>
+            <button onclick="showMovement('Baseball')">Baseball</button>
+            <button onclick="showMovement('Steve Martin')">Steve Martin</button>
+            <button onclick="showMovement('James Brown')">James Brown</button>
+            <button onclick="showMovement('Kick & Step')">Kick & Step</button>
+            <button onclick="showMovement('Bow & Arrow')">Bow & Arrow</button>
+        </div>
+        <div class="buttons-container">
+            <button onclick="showMovement('Creep')">Creep</button>
+            <button onclick="showMovement('Party Dance')">Party Dance</button>
+            <button onclick="showMovement('Jerk')">Jerk</button>
+            <button onclick="showMovement('Bernie')">Bernie</button>
+            <button onclick="showMovement('Millie Rock')">Millie Rock</button>
+            <button onclick="showMovement('Bedrock')">Bedrock</button>
+            <button onclick="showMovement('Shmurda')">Shmurda</button>
+            <button onclick="showMovement('Sciccors')">Sciccors</button>
+            <button onclick="showMovement('Sciccors')">Robocop</button>
+        </div>
+    </div>
+
+    <!-- Botão de voltar -->
+    <button id="back-button" onclick="showAllMovements()">Voltar</button>
+
+    <!-- Área onde o movimento será exibido -->
+    <div id="movement-display">
+        <p>Clique em um botão para ver o movimento!</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showMovement(moveName) {
+            const displayArea = document.getElementById("movement-display");
+            const buttonsWrapper = document.getElementById("buttons-wrapper");
+            const backButton = document.getElementById("back-button");
+
+            // Ocultar os botões de movimentos
+            buttonsWrapper.style.display = "none";
+
+            // Exibir botão de voltar
+            backButton.style.display = "block";
+
+            // Limpa o conteúdo anterior
+            displayArea.innerHTML = "";
+
+            // Mapear movimentos com URLs de vídeos
+            const movements = {
+                "Bounce": "https://youtube.com/embed/HuaCI6VA-Eg?si=IOBVx66hrXNL2uyq",
+                "Bart Simpson": "https://youtube.com/embed/26aasV5eBqE",
+                "Biz Markie": "https://youtube.com/embed/apXl1quMCqM",
+                "Reebok": "https://youtube.com/embed/JLr-58tL6_w",
+                "Kick Ball Change": "https://youtube.com/embed/g_xO6ueoPcA",
+                "Party Duke": "https://youtube.com/embed/DJbWooo6TzA",
+                "Running Man": "https://youtube.com/embed/ljIRHSfh-Ts",
+                "Cabbage Patch": "https://youtube.com/embed/HeM7KPSV590?t=9",
+                "Brooklyn Bounce": "https://youtube.com/embed/HuaCI6VA-Eg?si=IOBVx66hrXNL2uyq",
+                "Roger Rabbit": "https://www.youtube.com/embed/video-id-2",
+                "C-Walk": "https://www.youtube.com/embed/video-id-3",
+                "Smurf": "https://www.youtube.com/embed/video-id-4",
+                "Wop": "https://www.youtube.com/embed/video-id-5",
+                "Heel Toe": "https://www.youtube.com/embed/video-id-6",
+                "Party Machine": "https://www.youtube.com/embed/video-id-7",
+                "Charlestone": "https://www.youtube.com/embed/video-id-8",
+                "Real Love": "https://www.youtube.com/embed/video-id-9",
+                "Superman": "https://www.youtube.com/embed/video-id-10",
+                "RoofTop": "https://www.youtube.com/embed/video-id-11",
+                "Reject": "https://www.youtube.com/embed/video-id-12",
+                "Roller Skate": "https://www.youtube.com/embed/video-id-13",
+                "Baseball": "https://www.youtube.com/embed/video-id-14",
+                "Steve Martin": "https://www.youtube.com/embed/video-id-15",
+                "Mike Tyson": "https://www.youtube.com/embed/video-id-16",
+                "SpongeBob": "https://www.youtube.com/embed/video-id-17",
+                "James Brown": "https://www.youtube.com/embed/video-id-18",
+                "Kick & Step": "https://www.youtube.com/embed/video-id-19",
+            };
+            
+            // Se o movimento existir, insere o iframe com o vídeo
+            if (movements[moveName]) {
+                const iframe = document.createElement("iframe");
+                iframe.setAttribute("src", movements[moveName]);
+                iframe.setAttribute("allowfullscreen", "true");
+
+                const title = document.createElement("p");
+                title.textContent = `Movimento: ${moveName}`;
+
+                displayArea.appendChild(title);
+                displayArea.appendChild(iframe);
+            } else {
+                displayArea.innerHTML = "<p>Movimento não encontrado!</p>";
+            }
+        }
+
+        function showAllMovements() {
+            const buttonsWrapper = document.getElementById("buttons-wrapper");
+            const backButton = document.getElementById("back-button");
+            const displayArea = document.getElementById("movement-display");
+
+            // Mostra os botões novamente
+            buttonsWrapper.style.display = "flex";
+
+            // Oculta o botão de voltar
+            backButton.style.display = "none";
+
+            // Limpa o conteúdo do display
+            displayArea.innerHTML = "<p>Clique em um botão para ver o movimento!</p>";
+        }
+    </script>
+</body>
+</html>
