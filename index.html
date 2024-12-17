@@ -32,8 +32,14 @@
         }
 
         /* Botões dos movimentos */
+        .button-container-main{
+            display: flex;
+            flex-direction:row;
+           gap: 20px;
+        }
         .buttons-container {
             display: flex;
+            flex-direction:column;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
@@ -118,10 +124,13 @@
     </style>
 </head>
 <body>
-    <h1>Flashcards de Passos de Hip Hop</h1>
-
+    <h1>🕺Flashcards de Passos de Hip Hop 🪩</h1>
+    <!-- Área onde o movimento será exibido -->
+    <div id="movement-display">
+        <p>Clique em um botão para ver o movimento!</p>
+    </div>
     <!-- Botões com os nomes dos movimentos -->
-    <div id="buttons-wrapper">
+    <div id="buttons-wrapper" class="button-container-main">
         <div class="buttons-container">
             <button onclick="showMovement('Bounce')">Bounce</button>
             <button onclick="showMovement('Bart Simpson')">Bart Simpson</button>
@@ -153,11 +162,14 @@
             <button onclick="showMovement('Roller Skate')">Roller Skate</button>
             <button onclick="showMovement('Baseball')">Baseball</button>
             <button onclick="showMovement('Steve Martin')">Steve Martin</button>
+            <button onclick="showMovement('Mike Tyson')">Mike Tyson</button>
+            <button onclick="showMovement('SpongeBob')">SpongeBob</button>
             <button onclick="showMovement('James Brown')">James Brown</button>
             <button onclick="showMovement('Kick & Step')">Kick & Step</button>
-            <button onclick="showMovement('Bow & Arrow')">Bow & Arrow</button>
+
         </div>
         <div class="buttons-container">
+            <button onclick="showMovement('Bow & Arrow')">Bow & Arrow</button>
             <button onclick="showMovement('Creep')">Creep</button>
             <button onclick="showMovement('Party Dance')">Party Dance</button>
             <button onclick="showMovement('Jerk')">Jerk</button>
@@ -173,10 +185,7 @@
     <!-- Botão de voltar -->
     <button id="back-button" onclick="showAllMovements()">Voltar</button>
 
-    <!-- Área onde o movimento será exibido -->
-    <div id="movement-display">
-        <p>Clique em um botão para ver o movimento!</p>
-    </div>
+
 
     <!-- JavaScript -->
     <script>
@@ -204,25 +213,38 @@
                 "Party Duke": "https://youtube.com/embed/DJbWooo6TzA",
                 "Running Man": "https://youtube.com/embed/ljIRHSfh-Ts",
                 "Cabbage Patch": "https://youtube.com/embed/HeM7KPSV590?t=9",
-                "Brooklyn Bounce": "https://youtube.com/embed/HuaCI6VA-Eg?si=IOBVx66hrXNL2uyq",
-                "Roger Rabbit": "https://www.youtube.com/embed/video-id-2",
-                "C-Walk": "https://www.youtube.com/embed/video-id-3",
-                "Smurf": "https://www.youtube.com/embed/video-id-4",
-                "Wop": "https://www.youtube.com/embed/video-id-5",
-                "Heel Toe": "https://www.youtube.com/embed/video-id-6",
-                "Party Machine": "https://www.youtube.com/embed/video-id-7",
-                "Charlestone": "https://www.youtube.com/embed/video-id-8",
-                "Real Love": "https://www.youtube.com/embed/video-id-9",
-                "Superman": "https://www.youtube.com/embed/video-id-10",
-                "RoofTop": "https://www.youtube.com/embed/video-id-11",
-                "Reject": "https://www.youtube.com/embed/video-id-12",
-                "Roller Skate": "https://www.youtube.com/embed/video-id-13",
-                "Baseball": "https://www.youtube.com/embed/video-id-14",
-                "Steve Martin": "https://www.youtube.com/embed/video-id-15",
-                "Mike Tyson": "https://www.youtube.com/embed/video-id-16",
-                "SpongeBob": "https://www.youtube.com/embed/video-id-17",
-                "James Brown": "https://www.youtube.com/embed/video-id-18",
-                "Kick & Step": "https://www.youtube.com/embed/video-id-19",
+                "Happy Feet": "https://youtube.com/embed/X5-kHDF7QyI",
+                "Butterfly": "https://youtube.com/embed/6ptNVvDutdo",
+                "The Fila": "https://youtube.com/embed/hcfxdoSYuv8",
+                "Brooklyn Bounce": "https://youtube.com/embed/jS4daRUkV78",
+                "Roger Rabbit": "https://www.youtube.com/embed/gkvQTXykIrQ",
+                "C-Walk": "https://www.youtube.com/embed/h4nnK5xmrmo",
+                "Smurf": "https://www.youtube.com/embed/Q488n3JlA0w",
+                "Wop": "https://www.youtube.com/embed/918gBDPPuKo",
+                "Heel Toe": "https://www.youtube.com/embed/ABiybbBXCRc",
+                "Party Machine": "https://www.youtube.com/embed/s3jqYetx1y8",
+                "Charlestone": "https://www.youtube.com/embed/JVwkc9qXjGk",
+                "Real Love": "https://www.youtube.com/embed/5QrKM6eNm7w",
+                "Superman": "https://www.youtube.com/embed/NqcgD2TxDC0",
+                "RoofTop": "https://www.youtube.com/embed/ugzCX5o1L3E",
+                "Reject": "https://www.youtube.com/embed/7vN11SWlZ8w",
+                "Roller Skate": "https://www.youtube.com/embed/HSLEvikz5XE",
+                "Baseball": "https://www.youtube.com/embed/q_DE7kh9vLA",
+                "Steve Martin": "https://www.youtube.com/embed/EKGBL_h4GmA",
+                "Mike Tyson": "https://www.youtube.com/embed/1LiOEnhj06s",
+                "SpongeBob": "https://www.youtube.com/embed/RVIsSRa_FAE",
+                "James Brown": "https://www.youtube.com/embed/yWv3Lzu2vQA",
+                "Kick & Step": "https://www.youtube.com/embed/Wwxl4jjrXaM",
+                "Bow & Arrow": "https://www.youtube.com/embed/WmIQuJha-uQ",
+                "Creep": "https://www.youtube.com/embed/7iKAuWDYZ-k",
+                "Party Dance": "https://www.youtube.com/embed/WmIQuJha-uQ",
+                "Jerk": "https://www.youtube.com/embed/781JlPceBs0",
+                "Bernie": "https://www.youtube.com/embed/l4FXXtY32FQ",
+                "Millie Rock": "https://www.youtube.com/embed/SJG-3qpJGWc",
+                "Bedrock": "https://www.youtube.com/embed/qyQ3FnFaMok",
+                "Shmurda": "https://www.youtube.com/embed/F8et2Tbeoa0",
+                "Sciccors": "https://www.youtube.com/embed/0derz_AaKZk",
+                "Robocop": "https://www.youtube.com/embed/7XX2T2uyUvQ",
             };
             
             // Se o movimento existir, insere o iframe com o vídeo
